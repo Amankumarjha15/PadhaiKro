@@ -3,6 +3,8 @@ const OTP = require("../models/OTP");
 const Profile = require("../models/Profile");
 const otpGenerator = require("otp-generator");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 
 
@@ -156,4 +158,81 @@ exports.signUp = async (req , res) => {
         })
     }
 
+}
+
+
+
+exports.logIn = async (res , req) => {
+        try{
+
+            const {email , password} = req.body;
+
+            if(!email || !password){
+                return res.status(403).json({
+                    sucess:false,
+                    message:'Pleease Fill All The Details ',
+                })
+            }
+
+            const user = await User.findOne({email}).populate("additionalDetails");
+
+            if(!user){
+                return res.status(401).json({
+                    sucess:false,
+                    message:'User Not Found Please Sign Up First',
+                })
+            }
+
+
+            if(await bcrypt.compare(password , hasedPassword)){
+                const payload = {
+                    email: user.email,
+                    id: user._id,
+                    role: user.role,
+                }
+                const token = jwt.sign(payload , process.env.JWT_SECRET , {
+                    expiresIn:"2h",
+                });
+
+
+
+                user.token = token;
+                user,password = undefined;
+                
+    
+                const options = {
+                    expires: new Date(Date.now() + 3*24*60*60*1000),
+                    httpOnly:true,
+                }
+    
+                return res.cookie("token" , token , options).status(200).json({
+                    sucess:true,
+                    user,
+                    token,
+                    message:'User Logged in SucessFully',
+                });
+    
+            }else{
+                return res.status(401).json({
+                    sucess:false,
+                    message:"Password Is Incorrect Try Again",
+                });
+            }
+
+          
+
+
+
+
+
+
+
+
+        }catch(error){
+            console.log("Error In Login Handler : ", error);
+            return res.status(500).json({
+                sucess:false,
+                message:'Login Failure Please Try Again',
+            })
+        }
 }
