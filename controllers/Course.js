@@ -109,3 +109,34 @@ exports.allCourses = async (res,req) => {
         })
     }
 }
+
+
+
+exports.getCourseDetails = async (req , res) => {
+    try{
+        const {courseId} = req.body;
+
+        const courseDetails = await course.find({_id:courseId}).populate({path:"instructor",populate:{path:"additionalDetails"}}).populate("category").populate("ratingAndReviews").populate({path:"courseContent",populate:{path:"subSection"}}).exec();
+
+        if(!courseDetails){
+            return res.status(400).json({
+                sucess:false,
+                message:"Could not find the course data!!!",
+            })
+        }
+       
+
+        return res.status(200).json({
+            sucess:true,
+            message:"Course data fetched sucessfully",
+            data: courseDetails,
+        })
+    }catch(error){
+        console.log(error);
+        return res.status(500).json({
+            sucess:true,
+            message:"Error In Fetching course details",
+            error:error.message,
+        }) 
+    }
+}
