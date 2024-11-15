@@ -16,9 +16,9 @@ exports.resetPasswordToken = async (res , req) => {
             })
         }
 
-        const token = crypto.randomUUID();
+        const token = crypto.randomBytes(20).toString("hex");
 
-        const updatedDetails = await User.findOneAndUpdate({email:email},{token : token,resetPasswordExpires:Date.now() + 5*60*1000, }, {new:true});
+        const updatedDetails = await User.findOneAndUpdate({email:email},{token : token,resetPasswordExpires:Date.now() + 3600000 }, {new:true});
 
 
         const url = `https://localhost:3000/update-password/${token}`
@@ -62,7 +62,7 @@ exports.resetPassword = async (res , req) => {
         }
 
 
-        if(userDetail.resetPasswordExpires < Date.now()){
+        if(!(userDetail.resetPasswordExpires > Date.now())){
             return res.json({
                 sucess:false,
                 message:"OOPS! Token is Expired!!!",
@@ -87,7 +87,7 @@ exports.resetPassword = async (res , req) => {
         console.log("Erorr in Reset Password Contrroller  : ",error)
         return res.status(500).json({
             sucess:false,
-            message:"Error in Reset Password Controller : Password is not changed try again",
+            message:"Error in Reset Password try again",
         })
     }
 }
