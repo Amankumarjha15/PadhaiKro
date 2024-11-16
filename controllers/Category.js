@@ -1,71 +1,58 @@
-const tag = require("../models/Category");
-
+const { Mongoose } = require("mongoose");
+const Category = require("../models/Category");
 function getRandomInt(max) {
     return Math.floor(Math.random() * max)
   }
 
+exports.createCategory = async (req, res) => {
+	try {
+		const { name, description } = req.body;
+		if (!name) {
+			return res
+				.status(400)
+				.json({ success: false, message: "All fields are required" });
+		}
+		const CategorysDetails = await Category.create({
+			name: name,
+			description: description,
+		});
+		console.log(CategorysDetails);
+		return res.status(200).json({
+			success: true,
+			message: "Categorys Created Successfully",
+		});
+	} catch (error) {
+		return res.status(500).json({
+			success: true,
+			message: error.message,
+		});
+	}
+};
 
+exports.showAllCategories = async (req, res) => {
+	try {
+        console.log("INSIDE SHOW ALL CATEGORIES");
+		const allCategorys = await Category.find({});
+		res.status(200).json({
+			success: true,
+			data: allCategorys,
+		});
+	} catch (error) {
+		return res.status(500).json({
+			success: false,
+			message: error.message,
+		});
+	}
+};
 
-
-exports.createCategory = async (res, req) => {
-    try{
-
-        const {name , description} = req.body;
-
-        if(!name || !description){
-            return res.json({
-                  sucess:false,
-                  message:"All field are required fill all the details",
-            })
-        };
-
-        const Tag = await tag.create({
-            name:name,
-            description:description,
-        });
-
-        console.log(Tag);
-
-        return res.status(200).json({
-            sucess:true,
-            message:"Tag created sucessfully",
-        })
-
-    }catch(error){
-        return res.status(500).json({
-            sucess:false,
-            message:`Error in create tag handler/controller : ${error.message}`,
-        })
-    }
-}
-
-
-exports.showAllCategories = async(res , req) => {
-    try{
-
-        const allCategory = await tag.find({},{name:true});
-
-        return res.status(200).json({
-            sucess:true,
-            message:"All Tags Are Here",
-            data:allCategory,
-        })
-
-    }catch(error){
-        return res.status(500).json({
-            sucess:false,
-            message:`Error in show all tag handler/controller : ${error.message}`,
-        })
-    }
-}
-
+//categoryPageDetails 
 
 exports.categoryPageDetails = async (req, res) => {
     try {
       const { categoryId } = req.body
       console.log("PRINTING CATEGORY ID: ", categoryId);
       // Get courses for the specified category
-      const selectedCategory = await tag.findById(categoryId)
+      const selectedCategory = await Category.findById(categoryId)
         .populate({
           path: "courses",
           match: { status: "Published" },
@@ -82,7 +69,7 @@ exports.categoryPageDetails = async (req, res) => {
           .json({ success: false, message: "Category not found" })
       }
       // Handle the case when there are no courses
-      if (selectedCategory.course.length === 0) {
+      if (selectedCategory.courses.length === 0) {
         console.log("No courses found for the selected category.")
         return res.status(404).json({
           success: false,
@@ -91,10 +78,10 @@ exports.categoryPageDetails = async (req, res) => {
       }
   
       // Get courses for other categories
-      const categoriesExceptSelected = await tag.find({
+      const categoriesExceptSelected = await Category.find({
         _id: { $ne: categoryId },
       })
-      let differentCategory = await tag.findOne(
+      let differentCategory = await Category.findOne(
         categoriesExceptSelected[getRandomInt(categoriesExceptSelected.length)]
           ._id
       )
@@ -105,7 +92,7 @@ exports.categoryPageDetails = async (req, res) => {
         .exec()
         //console.log("Different COURSE", differentCategory)
       // Get top-selling courses across all categories
-      const allCategories = await tag.find()
+      const allCategories = await Category.find()
         .populate({
           path: "courses",
           match: { status: "Published" },
@@ -114,7 +101,7 @@ exports.categoryPageDetails = async (req, res) => {
         },
         })
         .exec()
-      const allCourses = allCategories.flatMap((category) => category.course)
+      const allCourses = allCategories.flatMap((category) => category.courses)
       const mostSellingCourses = allCourses
         .sort((a, b) => b.sold - a.sold)
         .slice(0, 10)
