@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 
+const User = require("../models/User");
+const Course = require("../models/Course");
+
 
 
 const ratingAndReviewSchema = new mongoose.Schema({
