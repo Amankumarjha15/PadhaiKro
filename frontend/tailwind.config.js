@@ -1,16 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
   theme: {
     fontFamily: {
       inter: ["Inter", "sans-serif"],
       "edu-sa": ["Edu SA Beginner", "cursive"],
       mono: ["Roboto Mono", "monospace"],
-    },
-    backgroundImage: {
-      'gradient-text': 'linear-gradient(to right, #1FA2FF, #12D8FA,#A6FFCB)',
-      'gradient-text-two': 'linear-gradient(to right, #FF512F, #F09819)',
-    
     },
     colors: {
       white: "#fff",
@@ -134,21 +129,7 @@ module.exports = {
         maxContent: "1260px",
         maxContentTab: "650px"
       },
-      screens: {
-        '850px': '850px',
-        '520px':'520px' // Add your custom breakpoint
-      },
     },
   },
-  plugins: [
-    function({ addUtilities }) {
-      addUtilities({
-        '.bg-clip-text': {
-          backgroundClip: 'text',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-        },
-      }, ['responsive', 'hover'])
-    },
-  ],
+  plugins: [],
 };
