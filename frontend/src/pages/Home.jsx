@@ -5,6 +5,8 @@ import Highlight from '../components/home/Highlight';
 import Button from '../components/home/Button';
 import banner from "../assets/Images/banner.mp4";
 import CodeBlocks from '../components/home/CodeBlocks';
+import InstructorSection from '../components/home/InstructorSection';
+import Footer from '../components/common/Footer';
 
 function Home() {
   return (
@@ -114,6 +116,49 @@ function Home() {
                 <Button text={'Learn More'} active={false} link={"/signup"}/>
              </div>
         </div>
+
+
+
+
+        {/* section 3 */}
+
+
+        <div className="w-11/12 mx-auto max-w-maxContent flex flex-col items-center justify-between gap-10 bg-richblack-900">
+        
+        <InstructorSection/>
+
+
+        <h1 className='text-4xl font-bold text-white mt-10'>Reviews From Other Learners</h1>
+        
+        
+        
+        
+        </div>
+
+
+
+       
+
+
+
+
+
+
+     <Footer/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
