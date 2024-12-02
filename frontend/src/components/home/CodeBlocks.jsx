@@ -34,10 +34,8 @@ function CodeBlocks({position , heading , subheading , btn1 , btn2 ,codeblock , 
      {/* section2 */}
 
 
-     <div className='w-[50%] h-fit flex flex-row'>
-
-
-
+     <div className='w-[500px] relative h-fit flex flex-row border-2 border-white/10 p-5 mx-4'>
+             {backgroundgradient}
             <div className="w-[10%] flex text-center flex-col  text-richblack-400 font-inter font-bold">
                 <p>1</p>
                 <p>2</p>
@@ -53,7 +51,7 @@ function CodeBlocks({position , heading , subheading , btn1 , btn2 ,codeblock , 
             </div>
 
 
-            <div className={`w-[90%] flex flex-col gap-2 font-bold font-mono ${codecolor}`}>
+            <div className={`w-[90%] flex flex-col gap-2 font-bold font-mono text-${codecolor}`}>
              <TypeAnimation sequence={[codeblock , 2000 , ""]} 
              repeat={Infinity} cursor={true}
              omitDeletionAnimation={true}

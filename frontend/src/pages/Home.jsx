@@ -68,7 +68,10 @@ function Home() {
 
             codeblock={`<!DOCTYPE html>\n <html lang="en">\n<head>\n<title>This is myPage</title>\n</head>\n<body>\n<h1><a href="/">Header</a></h1>\n<nav> <a href="/one">One</a> <a href="/two">Two</a> <a href="/three">Three</a>\n</nav>\n</body>`}
 
-            codecolor={"text-yellow-25"}
+            codecolor={"yellow-25"}
+
+            backgroundgradient={<div className="codeblock1 absolute"></div>}
+            
             ></CodeBlocks>
            </div>
 
@@ -100,7 +103,9 @@ function Home() {
 
             codeblock={`<!DOCTYPE html>\n <html lang="en">\n<head>\n<title>This is myPage</title>\n</head>\n<body>\n<h1><a href="/">Header</a></h1>\n<nav> <a href="/one">One</a> <a href="/two">Two</a> <a href="/three">Three</a>\n</nav>\n</body>`}
 
-            codecolor={"text-blue-25"}
+            codecolor={"blue-25"}
+
+            backgroundgradient={<div className="codeblock2 absolute"></div>}
             ></CodeBlocks>
            </div>
 
