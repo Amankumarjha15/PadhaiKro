@@ -7,6 +7,7 @@ import banner from "../assets/Images/banner.mp4";
 import CodeBlocks from '../components/home/CodeBlocks';
 import InstructorSection from '../components/home/InstructorSection';
 import Footer from '../components/common/Footer';
+import ExploreMore from '../components/home/ExploreMore';
 
 function Home() {
   return (
@@ -103,6 +104,14 @@ function Home() {
             ></CodeBlocks>
            </div>
 
+
+          {/* anothersection in section 1 */}
+
+         <ExploreMore/>
+
+
+
+
         </div>
 
 
@@ -110,7 +119,7 @@ function Home() {
 
         {/* section 2 */}
 
-        <div className="bg-white text-richblack-700 h-[333px] flex items-center mx-auto">
+        <div className="bg-white text-richblack-700 h-[400px] flex items-center mx-auto">
              <div className="w-11/12 max-w-maxContent justify-center flex gap-5 mx-auto text-white">
                 <Button text={'Explore Courses'} active={true} link={"/signup"}/>
                 <Button text={'Learn More'} active={false} link={"/signup"}/>
@@ -141,7 +150,7 @@ function Home() {
 
 
 
-
+{/* footer Section  */}
 
 
      <Footer/>
