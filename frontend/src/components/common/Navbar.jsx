@@ -14,6 +14,37 @@ function Navbar() {
 
 
 
+
+
+
+
+    // const [subLinks, setSubLinks] = useState([])
+    // const [loading, setLoading] = useState(false)
+  
+    // useEffect(() => {
+    //   ;(async () => {
+    //     setLoading(true)
+    //     try {
+    //       const res = await apiConnector("GET", categories.CATEGORIES_API)
+    //       setSubLinks(res.data.data)
+    //     } catch (error) {
+    //       console.log("Could not fetch Categories.", error)
+    //     }
+    //     setLoading(false)
+    //   })()
+    // }, [])
+
+
+
+
+
+
+
+
+
+
+
+
     const location = useLocation();
     const matchRoute = (value) => {
              return matchPath({path:value} , location.pathname)
@@ -31,15 +62,10 @@ function Navbar() {
                    {
                       NavbarLinks.map((link , index) => (
                         <li key={index}>
-                            {
-                                link.title === "Catalog" ? (
-                                 <div></div>
-                                )
-                                 : 
-                                (
+                           {
                                 <Link to={`${link.path}`}>
                                     <p className={`${matchRoute(link.path) ? "text-yellow-25" : "text-richblack-25"}`}>{link.title}</p>
-                                </Link>)
+                                </Link>
                             }
                         </li>
                       ))
