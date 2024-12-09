@@ -4,6 +4,7 @@ import { NavbarLinks } from '../../data/navbar-links'
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai"
+import ProfileDropDown from "../Auth/ProfileDropDown"
 
 function Navbar() {
     
@@ -113,7 +114,9 @@ function Navbar() {
               </button>
             </Link>
           )}
-          {/* {token !== null && <ProfileDropdown />} */}
+          {token !== null && <ProfileDropDown/> }
+
+          
         </div>
 
 

@@ -151,17 +151,6 @@ function Home() {
 
 
 
-       
-
-
-
-{/* footer Section  */}
-
-
-     <Footer/>
-
-
-
 
 
 

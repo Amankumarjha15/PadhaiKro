@@ -13,7 +13,7 @@ function Template({ title, description1, description2, image, formType }) {
       {loading ? (
         <div className="spinner"></div>
       ) : (
-        <div className="mx-auto flex w-[50%] flex-col-reverse justify-between p-16 m-10 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
+        <div className="mx-auto flex w-[50%] rounded-3xl flex-col-reverse justify-between p-16 m-10 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
           <div className="mx-auto w-full md:mx-0">
             <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5">
               {title}
