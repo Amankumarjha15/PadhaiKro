@@ -68,7 +68,7 @@ exports.signup = async (req, res) => {
       // Invalid OTP
       return res.status(400).json({
         success: false,
-        message: "The OTP is not valid",
+        message: "The OTP is not matched",
       })
     }
 
