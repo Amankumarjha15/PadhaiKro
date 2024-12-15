@@ -8,6 +8,8 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Footer from "./components/common/Footer";
 import UpdatePassword from "./pages/UpdatePassword";
 import VerifyEmail from "./pages/VerifyEmail";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 
 
@@ -22,6 +24,8 @@ function App() {
       <Route path='/forgot-password' element={<OpenRoute><ForgotPassword/></OpenRoute>}></Route>
       <Route path='/update-password/:id' element={<OpenRoute><UpdatePassword/></OpenRoute>}></Route>
       <Route path='/verify-email' element={<OpenRoute><VerifyEmail/></OpenRoute>}></Route>
+      <Route path='/about' element={<About/>}></Route>
+      <Route path='/contact' element={<Contact/>}></Route>
       </Routes>
     <Footer/>
     </div>
