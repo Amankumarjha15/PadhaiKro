@@ -1,4 +1,4 @@
-import { Route , Routes } from "react-router-dom";
+import { Route , Routes, useNavigate } from "react-router-dom";
 import Home from './pages/home'
 import Navbar from "./components/common/Navbar";
 import OpenRoute from "./components/Auth/OpenRoute";
@@ -10,10 +10,23 @@ import UpdatePassword from "./pages/UpdatePassword";
 import VerifyEmail from "./pages/VerifyEmail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import PrivateRoute from "./components/Auth/PrivateRoute";
+import MyProfile from "./components/Dashboard/MyProfile";
+import Dashboard from "./pages/Dashboard";
+import Settings from "./components/Dashboard/Settings/index"
+import Cart from "./components/Dashboard/Cart/index";
+import EnrolledCourses from "./components/Dashboard/MyCourses"
+import { useDispatch, useSelector } from "react-redux";
+import { ACCOUNT_TYPE } from "./utils/constants";
 
 
 
 function App() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  const { user } = useSelector((state) => state.profile)
+
   return (
     <div className='w-screen min-h-screen flex flex-col font-inter bg-richblack-900'>
     <Navbar/>
@@ -26,6 +39,49 @@ function App() {
       <Route path='/verify-email' element={<OpenRoute><VerifyEmail/></OpenRoute>}></Route>
       <Route path='/about' element={<About/>}></Route>
       <Route path='/contact' element={<Contact/>}></Route>
+
+
+
+      <Route 
+      element={
+        <PrivateRoute>
+          <Dashboard />
+        </PrivateRoute>
+      }
+    >
+      <Route path="dashboard/my-profile" element={<MyProfile />} />
+      
+      <Route path="dashboard/Settings" element={<Settings />} />
+      
+
+      {
+        user?.accountType === ACCOUNT_TYPE.STUDENT && (
+          <>
+          <Route path="dashboard/cart" element={<Cart />} />
+          <Route path="dashboard/enrolled-courses" element={<EnrolledCourses />} />
+          </>
+        )
+      }
+
+      {/* {
+        user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+          <>
+          <Route path="dashboard/instructor" element={<Instructor />} />
+          <Route path="dashboard/add-course" element={<AddCourse />} />
+          <Route path="dashboard/my-courses" element={<MyCourses />} />
+          <Route path="dashboard/edit-course/:courseId" element={<EditCourse />} />
+          
+          </>
+        )
+      } */}
+
+
+    </Route>
+
+
+
+
+
       </Routes>
     <Footer/>
     </div>
