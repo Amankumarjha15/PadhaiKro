@@ -15,7 +15,11 @@ import MyProfile from "./components/Dashboard/MyProfile";
 import Dashboard from "./pages/Dashboard";
 import Settings from "./components/Dashboard/Settings/index"
 import Cart from "./components/Dashboard/Cart/index";
-import EnrolledCourses from "./components/Dashboard/MyCourses"
+import EnrolledCourses from "./components/Dashboard/MyCourses";
+import AddCourse from "./components/Dashboard/AddCourse/index";
+import MyCourses from "./components/Dashboard/MyCourses";
+import EditCourse from "./components/Dashboard/EditCourse/index";
+import Instructor from "./components/Dashboard/InstructorDashboard/Instructor";
 import { useDispatch, useSelector } from "react-redux";
 import { ACCOUNT_TYPE } from "./utils/constants";
 
@@ -63,7 +67,7 @@ function App() {
         )
       }
 
-      {/* {
+      {
         user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
           <>
           <Route path="dashboard/instructor" element={<Instructor />} />
@@ -73,7 +77,7 @@ function App() {
           
           </>
         )
-      } */}
+      }
 
 
     </Route>
