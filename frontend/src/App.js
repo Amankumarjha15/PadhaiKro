@@ -23,6 +23,7 @@ import Instructor from "./components/Dashboard/InstructorDashboard/Instructor";
 import { useDispatch, useSelector } from "react-redux";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import Courses from "./pages/Courses";
+import Error from "./pages/Error";
 
 
 
@@ -83,6 +84,10 @@ function App() {
 
 
     </Route>
+
+
+
+    <Route path="*" element={<Error />} />
 
 
 
