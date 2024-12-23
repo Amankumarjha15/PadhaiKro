@@ -24,6 +24,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import Courses from "./pages/Courses";
 import Error from "./pages/Error";
+import CourseDetails from "./pages/CourseDetails"
 
 
 
@@ -46,6 +47,7 @@ function App() {
       <Route path='/about' element={<About/>}></Route>
       <Route path='/contact' element={<Contact/>}></Route>
       <Route path='/courses' element={<Courses/>}></Route>
+      <Route path="courses/:courseId" element={<CourseDetails/>} />
 
 
 
