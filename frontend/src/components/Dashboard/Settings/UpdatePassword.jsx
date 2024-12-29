@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom"
 
 import { changePassword } from "../../../services/operations/SettingsAPI"
 import IconBtn from "../../common/IconBtn"
+import toast from "react-hot-toast"
 
 export default function UpdatePassword() {
   const { token } = useSelector((state) => state.auth)
@@ -22,11 +23,12 @@ export default function UpdatePassword() {
 
   const submitPasswordForm = async (data) => {
     // console.log("password Data - ", data)
-    try {
-      await changePassword(token, data)
-    } catch (error) {
-      console.log("ERROR MESSAGE - ", error.message)
-    }
+    // try {
+    //   await changePassword(token, data)
+    // } catch (error) {
+    //   console.log("ERROR MESSAGE - ", error.message)
+    // }
+    toast.error("This account is dummy account for test you cannot change password")
   }
 
   return (

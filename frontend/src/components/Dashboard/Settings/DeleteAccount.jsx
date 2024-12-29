@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { deleteProfile } from "../../../services/operations/SettingsAPI"
 import ConfirmationModal from "../../common/ConfirmationModal";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function DeleteAccount() {
   const { token } = useSelector((state) => state.auth)
@@ -14,12 +15,13 @@ export default function DeleteAccount() {
   const [confirmationModal, setConfirmationModal] = useState(null)
 
   async function handleDeleteAccount() {
-    try {
-      dispatch(deleteProfile(token, navigate))
-    } catch (error) {
-      console.log("ERROR MESSAGE - ", error.message)
-    }
+    // try {
+    //   dispatch(deleteProfile(token, navigate))
+    // } catch (error) {
+    //   console.log("ERROR MESSAGE - ", error.message)
+    // }
     setConfirmationModal(null);
+    toast.error("This account is dummy account for test you cannot delete")
   }
 
   return (

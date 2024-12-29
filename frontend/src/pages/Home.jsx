@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import Highlight from '../components/home/Highlight';
@@ -8,8 +8,24 @@ import CodeBlocks from '../components/home/CodeBlocks';
 import InstructorSection from '../components/home/InstructorSection';
 import Footer from '../components/common/Footer';
 import ExploreMore from '../components/home/ExploreMore';
+import ReviewSlider from "../components/common/ReviewSlider"
+import { getAllInstructorData } from '../services/operations/profileAPI';
 
 function Home() {
+
+
+    
+      useEffect(() => {
+        ;(async () => {
+         
+          const instructorApiData = await getAllInstructorData()
+          console.log(instructorApiData);
+          
+        })()
+      }, [])
+
+
+
   return (
     <div>
         
@@ -144,7 +160,7 @@ function Home() {
 
         <h1 className='text-4xl font-bold text-white mt-10'>Reviews From Other Learners</h1>
         
-        
+        <ReviewSlider></ReviewSlider>
         
         
         </div>

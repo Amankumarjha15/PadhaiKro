@@ -11,7 +11,7 @@ import Quote from "../components/AboutPage/Quote"
 import StatsComponenet from "../components/AboutPage/Stats"
 import Highlight from "../components/home/Highlight"
 // import HighlightText from "../components/core/HomePage/HighlightText"
-// import ReviewSlider from "../components/common/ReviewSlider"
+import ReviewSlider from "../components/common/ReviewSlider"
 // import Footer from "../components/common/Footer"
 
 const About = () => {
@@ -115,7 +115,7 @@ const About = () => {
         <h1 className="text-center text-4xl font-semibold mt-8">
           Reviews from other learners
         </h1>
-        {/* <ReviewSlider /> */}
+        <ReviewSlider />
         {/* <ReviewSlider /> */}
       </div>
       
