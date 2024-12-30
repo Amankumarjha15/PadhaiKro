@@ -5,7 +5,7 @@ import { apiConnector } from "../apiconnector"
 import { profileEndpoints } from "../apis"
 import { logout } from "./authAPI"
 
-const { GET_USER_DETAILS_API, GET_USER_ENROLLED_COURSES_API, GET_INSTRUCTOR_DATA_API } = profileEndpoints
+const { GET_USER_DETAILS_API, GET_USER_ENROLLED_COURSES_API, GET_INSTRUCTOR_DATA_API ,GET_ALL_INSTRUCTOR_DATA} = profileEndpoints
 
 export function getUserDetails(token, navigate) {
   return async (dispatch) => {
@@ -83,5 +83,18 @@ export async function getInstructorData(token) {
     toast.error("Could not Get Instructor Data")
   }
   toast.dismiss(toastId);
+  return result;
+}
+
+export async function getAllInstructorData(){
+  let result = [];
+  try{
+      const response = await apiConnector("GET" , GET_ALL_INSTRUCTOR_DATA)
+      console.log("Get all instructor data api" ,response );
+      result=response.data.data;
+  }catch(error){
+    console.log("GET_ALL_INSTRUCTOR_API ERROR", error);
+    toast.error("Could not Get all Instructor Data")
+  }
   return result;
 }

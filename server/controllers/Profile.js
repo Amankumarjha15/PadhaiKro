@@ -236,3 +236,17 @@ exports.instructorDashboard = async (req, res) => {
     res.status(500).json({ message: "Server Error" })
   }
 }
+
+
+exports.allinstructor = async (req , res) =>{
+  try{
+     const Data = await User.find({accountType : "Instructor"}).populate("additionalDetails").exec()
+     console.log("All Instructor data", Data);
+
+     res.status(200).json({data : Data});
+
+  }catch(error){
+    console.error(error)
+    res.status(500).json({ message: "Server Error" })
+  }
+}
