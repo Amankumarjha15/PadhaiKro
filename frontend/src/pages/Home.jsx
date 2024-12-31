@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import Highlight from '../components/home/Highlight';
@@ -11,7 +11,31 @@ import ExploreMore from '../components/home/ExploreMore';
 import ReviewSlider from "../components/common/ReviewSlider"
 import { getAllInstructorData } from '../services/operations/profileAPI';
 
+
+
+
+
+
+
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+import '../App.css';
+
+// import required modules
+import { Navigation , Autoplay } from 'swiper/modules';
+
+
+
+
+
+
 function Home() {
+  const [Instructor, setInstructor] = useState([]);
 
 
     
@@ -20,6 +44,7 @@ function Home() {
          
           const instructorApiData = await getAllInstructorData()
           console.log(instructorApiData);
+          setInstructor(instructorApiData);
           
         })()
       }, [])
@@ -154,14 +179,70 @@ function Home() {
 
 
         <div className="w-11/12 mx-auto max-w-maxContent flex flex-col items-center justify-between gap-10 bg-richblack-900">
-        
-        <InstructorSection/>
 
 
-        <h1 className='text-4xl font-bold text-white mt-10'>Reviews From Other Learners</h1>
+
+
+
+<div className="w-full mt-10">
+        <h1 className='text-4xl font-bold text-white text-center my-10'><Highlight text={"Our Instructors"}/></h1>
+        <Swiper
+         slidesPerView={1}
+         spaceBetween={250}
+      loop={true}
+      autoplay={{
+        delay: 1500,
+        disableOnInteraction: false,
+      }}
+    //      modules={[FreeMode, Pagination , Navigation]}
+    //       breakpoints={{
+    //       1024: {
+    //    slidesPerView: 3,
+    //         },
+    //   }}
+    // className="max-h-[30rem]"
+    modules={[Navigation ,Autoplay]} className="mySwiper  p-5 md:p-20 bg-richblack-400 rounded-3xl" pagination={{dynamicBullets:true}} 
+        >
+          {Instructor?.map((Instructors, i) => (
+            <SwiperSlide key={i}>
+                 <>
+                 <div className="w-full flex md:flex-row flex-col">
+                  <div className="md:w-[50%] w-full"><img src={Instructors.image} alt="instructor" className='rounded-3xl'/></div>
+                  <div className="md:w-[50%] w-full text-black p-10 flex flex-col gap-10">
+                    <h1 className='md:text-4xl font-bold'>{Instructors.firstName} {Instructors.lastName}</h1>
+                    <p className='md:text-xl font-semibold line-clamp-5 md:line-clamp-none'>{Instructors.additionalDetails.about}</p>
+
+                  </div>
+                 </div>
+                 </>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
+        {/* <InstructorSection/> */}
+
+
+        <h1 className='text-4xl font-bold text-white mt-10'>Reviews <Highlight text={"From Other Learners"}/></h1>
+        <div className="w-11/12">
         <ReviewSlider></ReviewSlider>
-        
+        </div> 
+               
         
         </div>
 
