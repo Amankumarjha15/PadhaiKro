@@ -17,6 +17,13 @@ import { Autoplay, FreeMode, Pagination } from "swiper/modules"
 import { apiConnector } from "../../services/apiconnector"
 import { ratingsEndpoints } from "../../services/apis"
 
+
+
+
+
+
+
+
 function ReviewSlider() {
   const [reviews, setReviews] = useState([])
   const truncateWords = 15
@@ -39,7 +46,7 @@ function ReviewSlider() {
     <div className="text-white">
       <div className="my-[50px] h-[184px] max-w-maxContentTab lg:max-w-maxContent">
         <Swiper
-          slidesPerView={4}
+         //slidesPerView={3}
           spaceBetween={25}
           loop={true}
           freeMode={true}
@@ -47,13 +54,25 @@ function ReviewSlider() {
             delay: 1000,
             disableOnInteraction: false,
           }}
+
+          breakpoints={{
+            // When the screen width is >= 640px
+           
+            640 : {
+              slidesPerView: 3,
+            },
+             0: {
+              slidesPerView: 1,
+            },
+          }}
+
           modules={[FreeMode, Pagination, Autoplay]}
-          className="w-full "
+          className="w-full swiper  bg-richblack-400 rounded-3xl px-5"
         >
           {reviews.map((review, i) => {
             return (
               <SwiperSlide key={i}>
-                <div className="w-full flex flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25">
+                <div className="w-full flex flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25 rounded-2xl">
                   <div className="flex items-center gap-4">
                     {/* <img
                       className="h-9 w-9 rounded-full object-cover"
@@ -68,13 +87,13 @@ function ReviewSlider() {
                       } alt="user image"  className="rounded-full" />
                     </div>
                     <div className="flex flex-col">
-                      <h1 className="font-semibold text-richblack-5">{`${review?.user?.firstName} ${review?.user?.lastName}`}</h1>
-                      <h2 className="text-[12px] font-medium text-richblack-500">
+                      <h1 className="font-semibold text-richblack-5 line-clamp-1 md:line-clamp-none">{`${review?.user?.firstName} ${review?.user?.lastName}`}</h1>
+                      <h2 className="text-[12px] font-medium text-richblack-500 line-clamp-1 md:line-clamp-none">
                         {review?.course?.courseName}
                       </h2>
                     </div>
                   </div>
-                  <p className="font-medium text-richblack-25">
+                  <p className="font-medium text-richblack-25 line-clamp-2 md:line-clamp-none">
                     {review?.review.split(" ").length > truncateWords
                       ? `${review?.review
                           .split(" ")
