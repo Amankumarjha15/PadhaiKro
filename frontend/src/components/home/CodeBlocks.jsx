@@ -133,10 +133,10 @@ function CodeBlocks({
     <div
       className={`flex flex-col ${
         position === "row" ? "md:flex-row" : "md:flex-row-reverse"
-      } my-20 mx-5 justify-between gap-10`}
+      } my-10 mx-5 justify-between gap-10`}
     >
       {/* Section 1 */}
-      <div className="w-full md:w-[50%] flex flex-col gap-10 items-center md:items-start">
+      <div className="w-full md:w-[50%] text-center md:text-left flex flex-col gap-10 items-center md:items-start">
         {heading}
         <div className="text-richblack-300 font-bold text-center md:text-left">
           {subheading}
@@ -157,7 +157,7 @@ function CodeBlocks({
       </div>
 
       {/* Section 2 */}
-      <div className="relative w-full md:w-[500px] h-fit flex flex-row border-2 border-white/10 p-5 mx-4">
+      <div className="relative w-full md:w-[500px] h-fit flex flex-row border-2 border-white/10 p-5 md:mx-4">
         {backgroundgradient}
         <div className="w-[10%] flex text-center flex-col text-richblack-400 font-inter font-bold">
           {/* Line Numbers */}
@@ -167,7 +167,7 @@ function CodeBlocks({
         </div>
 
         <div
-          className={`w-[90%] flex flex-col gap-2 font-bold font-mono text-${codecolor}`}
+          className={`w-[90%] flex flex-col gap-2 text-sm md:text-base font-bold font-mono text-${codecolor}`}
         >
           <TypeAnimation
             sequence={[codeblock, 2000, ""]}

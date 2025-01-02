@@ -3,10 +3,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import Highlight from '../components/home/Highlight';
 import Button from '../components/home/Button';
-import banner from "../assets/Images/banner.mp4";
 import CodeBlocks from '../components/home/CodeBlocks';
-import InstructorSection from '../components/home/InstructorSection';
-import Footer from '../components/common/Footer';
 import ExploreMore from '../components/home/ExploreMore';
 import ReviewSlider from "../components/common/ReviewSlider"
 import { getAllInstructorData } from '../services/operations/profileAPI';
@@ -72,16 +69,16 @@ function Home() {
            With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback from instructors. 
            </div>
 
-           <div className="flex flex-row mt-8 gap-7">
-            <Button active={true} link={"/signup"} text={"Learn More"}></Button>
-            <Button active={false} link={"/login"} text={"Book a demo"}></Button>
+           <div className="flex flex-row my-8 gap-7">
+            <Button active={true} link={"/about"} text={"Learn More"}></Button>
+            <Button active={false} link={"/contact"} text={"Book a demo"}></Button>
            </div>
            
-           <div className='shadow-blue-200 my-12 mx-10'>
+           {/* <div className='shadow-blue-200'>
              
-           {/* <video muted loop autoPlay><source src={banner} type='video/mp4'></source></video> */}
+            <video muted loop autoPlay><source src={banner} type='video/mp4'></source></video>
 
-           </div>
+           </div>  */}
 
            {/* codesection1 */}
 
@@ -165,10 +162,10 @@ function Home() {
 
         {/* section 2 */}
 
-        <div className="bg-white text-richblack-700 h-[400px] flex items-center mx-auto">
+        <div className="bg-white text-richblack-700 h-[200px] md:h-[400px] flex items-center mx-auto">
              <div className="w-11/12 max-w-maxContent justify-center flex gap-5 mx-auto text-white">
-                <Button text={'Explore Courses'} active={true} link={"/signup"}/>
-                <Button text={'Learn More'} active={false} link={"/signup"}/>
+                <Button text={'Explore Courses'} active={true} link={"/courses"}/>
+                <Button text={'Learn More'} active={false} link={"/about"}/>
              </div>
         </div>
 
@@ -178,46 +175,46 @@ function Home() {
         {/* section 3 */}
 
 
-        <div className="w-11/12 mx-auto max-w-maxContent flex flex-col items-center justify-between gap-10 bg-richblack-900">
+      <div className="w-11/12 mx-auto max-w-maxContent flex flex-col items-center justify-between gap-10 bg-richblack-900">
 
 
 
 
 
-<div className="w-full mt-10">
-        <h1 className='text-4xl font-bold text-white text-center my-10'><Highlight text={"Our Instructors"}/></h1>
-        <Swiper
-         slidesPerView={1}
-         spaceBetween={250}
-      loop={true}
-      autoplay={{
-        delay: 1500,
-        disableOnInteraction: false,
-      }}
-    //      modules={[FreeMode, Pagination , Navigation]}
-    //       breakpoints={{
-    //       1024: {
-    //    slidesPerView: 3,
-    //         },
-    //   }}
-    // className="max-h-[30rem]"
-    modules={[Navigation ,Autoplay]} className="mySwiper  p-5 md:p-20 bg-richblack-400 rounded-3xl" pagination={{dynamicBullets:true}} 
-        >
-          {Instructor?.map((Instructors, i) => (
-            <SwiperSlide key={i}>
-                 <>
-                 <div className="w-full flex md:flex-row flex-col">
-                  <div className="md:w-[50%] w-full"><img src={Instructors.image} alt="instructor" className='rounded-3xl'/></div>
-                  <div className="md:w-[50%] w-full text-black p-10 flex flex-col gap-10">
-                    <h1 className='md:text-4xl font-bold'>{Instructors.firstName} {Instructors.lastName}</h1>
-                    <p className='md:text-xl font-semibold line-clamp-5 md:line-clamp-none'>{Instructors.additionalDetails.about}</p>
+       <div className="w-full mt-10">
+                      <h1 className='text-4xl font-bold text-white text-center my-10'><Highlight text={"Our Instructors"}/></h1>
+                      <Swiper
+                      slidesPerView={1}
+                      spaceBetween={250}
+                    loop={true}
+                    autoplay={{
+                      delay: 2500,
+                      // disableOnInteraction: false,
+                    }}
+                  //      modules={[FreeMode, Pagination , Navigation]}
+                  //       breakpoints={{
+                  //       1024: {
+                  //    slidesPerView: 3,
+                  //         },
+                  //   }}
+                  // className="max-h-[30rem]"
+                  modules={[Navigation ,Autoplay]} className="mySwiper  p-5 md:p-20 bg-richblack-200 rounded-3xl" pagination={{dynamicBullets:true}} 
+                      >
+                        {Instructor?.map((Instructors, i) => (
+                          <SwiperSlide key={i}>
+                              <>
+                              <div className="w-full flex md:flex-row flex-col">
+                                <div className="md:w-[50%] w-full"><img src={Instructors.image} alt="instructor" className='rounded-3xl'/></div>
+                                <div className="md:w-[50%] w-full text-black p-10 flex flex-col gap-10">
+                                  <h1 className='md:text-4xl font-bold'>{Instructors.firstName} {Instructors.lastName}</h1>
+                                  <p className='md:text-xl font-semibold line-clamp-5 md:line-clamp-none'>{Instructors.additionalDetails.about}</p>
 
-                  </div>
-                 </div>
-                 </>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+                                </div>
+                              </div>
+                              </>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
         </div>
 
 
@@ -238,7 +235,7 @@ function Home() {
         {/* <InstructorSection/> */}
 
 
-        <h1 className='text-4xl font-bold text-white mt-10'>Reviews <Highlight text={"From Other Learners"}/></h1>
+        <h1 className='text-center text-4xl font-bold text-white'>Reviews <Highlight text={"From Other Learners"}/></h1>
         <div className="w-11/12">
         <ReviewSlider></ReviewSlider>
         </div> 
