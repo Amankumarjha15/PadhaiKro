@@ -27,14 +27,26 @@ import Error from "./pages/Error";
 import CourseDetails from "./pages/CourseDetails"
 import ViewCourse from "./pages/ViewCourse";
 import VideoDetail from "./components/ViewCourse/VideoDetails"
+import { useEffect } from "react";
+import { logout } from "./services/operations/authAPI";
 
 
 
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   
   const { user } = useSelector((state) => state.profile)
+
+  useEffect(()=>{ 
+    const ex = localStorage.getItem("expiresin")
+    if(ex>Date.now()){
+      dispatch(logout(navigate))
+    }},[])
+
+
+
 
   return (
     <div className='w-screen min-h-screen flex flex-col font-inter bg-richblack-900'>

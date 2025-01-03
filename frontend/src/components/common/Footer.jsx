@@ -16,8 +16,8 @@ const Footer = () => {
 
 
       <div className="w-11/12 mx-auto flex justify-center items-center  gap-10 text-richblack-400 my-20 flex-col">
-      <div>
-              <img src={Logo} alt="" className="object-contain" />
+      <div>   
+              <h1 className="font-edu-sa font-bold text-4xl text-white/80">PadhaiKro</h1>
               </div>
               <div className="flex flex-col gap-2">
               <h1 className="text-richblack-50 font-semibold text-[16px]">
