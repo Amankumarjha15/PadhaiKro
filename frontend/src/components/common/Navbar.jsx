@@ -41,7 +41,7 @@ function Navbar() {
       <div className="hidden md:flex h-20 items-center justify-center border-b-[1px] border-b-richblack-600">
         <div className="flex w-11/12 max-w-maxContent items-center justify-between">
           <Link to={"/"}>
-            <h1 className="text-2xl text-richblue-100 font-inter font-bold">
+            <h1 className="text-2xl text-white/80 font-edu-sa font-bold">
               PadhaiKro
             </h1>
           </Link>
