@@ -39,8 +39,8 @@ function Courses() {
 
     },[])
 
-  console.log("data" , Data);
-  console.log("datacat" , catData);
+ // console.log("data" , Data);
+ // console.log("datacat" , catData);
 
   if (loading) {
     return (
@@ -70,10 +70,10 @@ function Courses() {
       
 
 
-        <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
+        <div className=" mx-auto box-content w-11/12 max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
             <div className="text-4xl text-center text-richblack-400 font-bold">Our Courses</div>
             <div className="py-8">
-              <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+              <div className="grid grid-cols-1 md:gap-6 lg:grid-cols-2">
                 {Data.map((course, i) => (
                     <Course_Card course={course} key={i} Height={"h-[400px]"} />
                   ))}
