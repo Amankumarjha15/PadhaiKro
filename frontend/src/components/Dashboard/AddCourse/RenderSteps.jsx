@@ -27,11 +27,11 @@ export default function RenderSteps() {
   return (
     <>
       <div className="relative mb-2 flex w-full justify-center">
-        {steps.map((item) => (
+        {steps.map((item , i) => (
           <>
             <div
               className="flex flex-col items-center "
-              key={item.id}
+              key={i}
             >
               <button
                 className={`grid cursor-default aspect-square w-[34px] place-items-center rounded-full border-[1px] ${
@@ -62,11 +62,11 @@ export default function RenderSteps() {
       </div>
 
       <div className="relative mb-16 flex w-full select-none justify-between">
-        {steps.map((item) => (
+        {steps.map((item , i) => (
           <>
             <div
               className="flex min-w-[130px] flex-col items-center gap-y-2"
-              key={item.id}
+              key={i}
             >
               
               <p

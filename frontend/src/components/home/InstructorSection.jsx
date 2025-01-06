@@ -17,7 +17,7 @@ function InstructorSection() {
                 <div className='text-white text-4xl font-semibold'>
                     Become An <Highlight text={"Instructor"}/>
                 </div>
-                <p className='text-sm text-richblack-300 font-semibold'>Instructors from around the world teach millions of students on StudyNotion. We provide the tools and skills to teach what you love.</p>
+                <p className='text-sm text-richblack-300 font-semibold'>Instructors from around the world teach millions of students on Padhai kro. We provide the tools and skills to teach what you love.</p>
                 <Button text={"Start Teaching Today"} active={true} link={"/signup"}/>
             </div>
 

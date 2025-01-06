@@ -17,7 +17,7 @@ export default function Instructor() {
         setLoading(true)
         const instructorApiData = await getInstructorData(token)
         const result = await fetchInstructorCourses(token)
-        console.log(instructorApiData)
+      // console.log(instructorApiData)
         if (instructorApiData.length) setInstructorData(instructorApiData)
         if (result) {
           setCourses(result)
@@ -95,9 +95,9 @@ export default function Instructor() {
                   <p className="text-xs font-semibold text-yellow-50">View All</p>
                 </Link>
               </div>
-              <div className="my-4 flex items-start space-x-6">
+              <div className="my-4 flex flex-col sm:flex-row gap-4 sm:gap-0 items-center sm:items-start space-x-6">
                 {courses.slice(0, 3).map((course) => (
-                  <div key={course._id} className="w-1/3">
+                  <div key={course._id} className="w-full sm:w-1/3">
                     <img
                       src={course.thumbnail}
                       alt={course.courseName}
