@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, matchPath, useNavigate } from "react-router-dom";
 import { NavbarLinks } from "../../data/navbar-links";
 import { useLocation } from "react-router-dom";
@@ -32,6 +32,7 @@ function Navbar() {
     dispatch(logout(navigate));
     toggleMobileMenu();
   };
+
 
 
 
@@ -110,7 +111,7 @@ function Navbar() {
 
 
       {/* Mobile Navbar for screens smaller than 740px */}
-      <div className="flex md:hidden">
+      <div className="flex md:hidden sticky w-full z-50">
         <div className="flex h-20 items-center justify-between px-4 border-b-[1px] border-b-richblack-600 w-full">
           {/* Logo */}
           <Link to="/">
