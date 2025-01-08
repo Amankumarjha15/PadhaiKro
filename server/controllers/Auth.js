@@ -57,7 +57,7 @@ exports.signup = async (req, res) => {
 
     // Find the most recent OTP for the email
     const response = await OTP.find({ email }).sort({ createdAt: -1 }).limit(1)
-    console.log(response)
+   // console.log(response)
     if (response.length === 0) {
       // OTP not found for the email
       return res.status(400).json({
@@ -145,7 +145,7 @@ exports.login = async (req, res) => {
         { email: user.email, id: user._id, accountType: user.accountType },
         process.env.JWT_SECRET,
         {
-          expiresIn: "24h",
+          expiresIn: "7d",
         }
       )
 
@@ -154,13 +154,14 @@ exports.login = async (req, res) => {
       user.password = undefined
       // Set cookie for token and return success response
       const options = {
-        expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+        expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
         httpOnly: true,
       }
       res.cookie("token", token, options).status(200).json({
         success: true,
         token,
         user,
+        options,
         message: `User Login Success`,
       })
     } else {
@@ -213,7 +214,7 @@ exports.sendotp = async (req, res) => {
     }
     const otpPayload = { email, otp }
     const otpBody = await OTP.create(otpPayload)
-    console.log("OTP Body", otpBody)
+ //   console.log("OTP Body", otpBody)
     res.status(200).json({
       success: true,
       message: `OTP Sent Successfully`,
@@ -264,7 +265,7 @@ exports.changePassword = async (req, res) => {
           `Password updated successfully for ${updatedUserDetails.firstName} ${updatedUserDetails.lastName}`
         )
       )
-      console.log("Email sent successfully:", emailResponse.response)
+     // console.log("Email sent successfully:", emailResponse.response)
     } catch (error) {
       // If there's an error sending the email, log the error and return a 500 (Internal Server Error) error
       console.error("Error occurred while sending email:", error)

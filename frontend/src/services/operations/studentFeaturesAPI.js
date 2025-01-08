@@ -45,7 +45,7 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
         if(!orderResponse.data.success) {
             throw new Error(orderResponse.data.message);
         }
-        console.log("PRINTING orderResponse", orderResponse);
+      //  console.log("PRINTING orderResponse", orderResponse);
         //options
         const options = {
             key: process.env.RAZORPAY_KEY,
@@ -72,7 +72,7 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
         paymentObject.open();
         paymentObject.on("payment.failed", function(response) {
             toast.error("oops, payment failed");
-            console.log(response.error);
+          //  console.log(response.error);
         })
 
     }
