@@ -14,6 +14,9 @@ import { fetchCourseDetails } from "../services/operations/courseDetailsAPI"
 import { buyCourse } from "../services/operations/studentFeaturesAPI"
 import GetAvgRating from "../utils/avgRating"
 import Error from "./Error"
+import { ACCOUNT_TYPE } from "../utils/constants"
+import toast from "react-hot-toast"
+import { addToCart } from "../slices/cartSlice"
 
 function CourseDetails() {
   const { user } = useSelector((state) => state.profile)
@@ -124,6 +127,29 @@ function CourseDetails() {
     )
   }
 
+
+
+  
+  const handleAddToCart = () => {
+    if (user && user?.accountType === ACCOUNT_TYPE.INSTRUCTOR) {
+      toast.error("You are an Instructor. You can't buy a course.")
+      return
+    }
+    if (token) {
+      const course = response?.data?.courseDetails;
+      dispatch(addToCart(course))
+      return
+    }
+    setConfirmationModal({
+      text1: "You are not logged in!",
+      text2: "Please login to add To Cart",
+      btn1Text: "Login",
+      btn2Text: "Cancel",
+      btn1Handler: () => navigate("/login"),
+      btn2Handler: () => setConfirmationModal(null),
+    })
+  }
+
   return (
     <>
       <div className={`relative w-full bg-richblack-800`}>
@@ -173,11 +199,32 @@ function CourseDetails() {
               <p className="space-x-3 pb-4 text-3xl font-semibold text-richblack-5">
                 Rs. {price}
               </p>
-              <button className="yellowButton" onClick={handleBuyCourse}>
+              {/* <button className="yellowButton" onClick={handleBuyCourse}>
                 Buy Now
               </button>
-              <button className="blackButton">Add to Cart</button>
+              <button className="blackButton" onClick={handleAddToCart}>Add to Cart</button> */}
+            {  user && response?.data?.courseDetails?.studentsEnrolled.includes(user?._id) ? (
+                    <button className="yellowButton" onClick={() => navigate("/dashboard/enrolled-courses")}>
+                      Go to Course
+                    </button>
+                  ) : (
+                    <>
+                      <button className="yellowButton" onClick={handleBuyCourse}>
+                        Buy Now
+                      </button>
+                      <button className="blackButton" onClick={handleAddToCart}>
+                        Add to Cart
+                      </button>
+                    </>
+                  )}
             </div>
+
+            
+
+
+
+
+
           </div>
           {/* Courses Card */}
           <div className="right-[1rem] top-[60px] mx-auto hidden min-h-[600px] w-1/3 max-w-[410px] translate-y-24 md:translate-y-0 lg:absolute  lg:block">
