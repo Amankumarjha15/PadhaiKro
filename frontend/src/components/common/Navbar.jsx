@@ -111,7 +111,7 @@ function Navbar() {
 
 
       {/* Mobile Navbar for screens smaller than 740px */}
-      <div className="flex md:hidden sticky w-full z-50">
+      <div className="flex md:hidden w-full">
         <div className="flex h-20 items-center justify-between px-4 border-b-[1px] border-b-richblack-600 w-full">
           {/* Logo */}
           <Link to="/">
@@ -131,7 +131,7 @@ function Navbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="absolute top-20 left-0 z-50 w-full bg-richblack-900 shadow-md">
+          <div className="fixed left-0 h-[100vh] z-50 w-full bg-richblack-900 shadow-md">
             <ul className="flex flex-col gap-4 p-6">
               {/* Navbar links */}
               {NavbarLinks.map((link, index) => (
@@ -193,6 +193,16 @@ function Navbar() {
                 </li>
                 </>
               )}
+
+
+              <>
+              <li className="text-center">{  <button
+                  className="text-6xl mt-10 text-yellow-100"
+                  onClick={toggleMobileMenu}
+                     >
+                        <IoClose />
+                    </button>}</li>
+              </>
             </ul>
           </div>
         )}
