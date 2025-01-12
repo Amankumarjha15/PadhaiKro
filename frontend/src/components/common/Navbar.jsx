@@ -111,7 +111,7 @@ function Navbar() {
 
 
       {/* Mobile Navbar for screens smaller than 740px */}
-      <div className="flex md:hidden w-full">
+      <div className="flex md:hidden  w-full">
         <div className="flex h-20 items-center justify-between px-4 border-b-[1px] border-b-richblack-600 w-full">
           {/* Logo */}
           <Link to="/">
@@ -147,6 +147,25 @@ function Navbar() {
                   </Link>
                 </li>
               ))}
+
+                   {/* Cart Icon */}
+                  {user && user?.accountType !== "Instructor" && (
+                    <li>
+                      <Link
+                        to="/dashboard/cart"
+                        className="relative flex items-center gap-2 text-richblack-100"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <AiOutlineShoppingCart className="text-2xl" />
+                        {totalItems > 0 && (
+                          <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
+                            {totalItems}
+                          </span>
+                        )}
+                        Cart
+                      </Link>
+                    </li>
+                  )}
 
               {/* Sign In, Sign Up, Dashboard */}
               {token === null && (

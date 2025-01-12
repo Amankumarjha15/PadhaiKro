@@ -94,13 +94,13 @@ function Home() {
             
             btn1={{
               text:"Try it",
-              link:"/signup",
+              link:"/courses",
               active:true,
             }}
 
             btn2={{
               text:"Learn more",
-              link:"/login",
+              link:"/about",
               active:false,
             }}
 
@@ -129,13 +129,13 @@ function Home() {
             
             btn1={{
               text:"Courses",
-              link:"/signup",
+              link:"/courses",
               active:true,
             }}
 
             btn2={{
               text:"Learn more",
-              link:"/login",
+              link:"/about",
               active:false,
             }}
 
@@ -189,7 +189,7 @@ function Home() {
                     loop={true}
                     autoplay={{
                       delay: 2500,
-                      // disableOnInteraction: false,
+                     disableOnInteraction: false,
                     }}
                   //      modules={[FreeMode, Pagination , Navigation]}
                   //       breakpoints={{
@@ -203,9 +203,9 @@ function Home() {
                         {Instructor?.map((Instructors, i) => (
                           <SwiperSlide key={i}>
                               <>
-                              <div className="w-full flex md:flex-row flex-col">
-                                <div className="md:w-[50%] w-full"><img src={Instructors.image} alt="instructor" className='rounded-3xl'/></div>
-                                <div className="md:w-[50%] w-full text-black p-10 flex flex-col gap-10">
+                              <div className="w-full flex lg:flex-row flex-col">
+                                <div className="lg:w-[50%] w-full"><img src={Instructors.image} alt="instructor" className='rounded-3xl'/></div>
+                                <div className="lg:w-[50%] w-full text-black p-10 flex flex-col gap-10">
                                   <h1 className='md:text-4xl font-bold font-edu-sa'>{Instructors.firstName} {Instructors.lastName}</h1>
                                   <p className='md:text-xl font-medium text-black/90 line-clamp-6 md:line-clamp-none'>{Instructors.additionalDetails.about}</p>
 
