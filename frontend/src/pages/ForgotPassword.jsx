@@ -26,8 +26,8 @@ function ForgotPassword() {
           loading ? (
           <div className='spinner'></div>
         ) : (
-            <div className='w-[50%] flex flex-col text-white items-center p-10 gap-6 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]'>
-                <h1 className='text-4xl font-inter font-bold text-yellow-25 '>
+            <div className=' w-[90%] md:w-[50%] flex flex-col text-white items-center p-10 gap-6 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]'>
+                <h1 className='text-4xl font-inter text-center font-bold text-yellow-25 '>
                     {
                         !SentEmail ? "Reset Your Password !" : "Check Your Email !"
                     }

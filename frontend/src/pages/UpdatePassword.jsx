@@ -39,7 +39,7 @@ function UpdatePassword() {
       {loading ? (
         <div className="spinner"></div>
       ) : (
-        <div className="w-[50%] p-16 border rounded-3xl shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
+        <div className="w-[95%] md:w-[50%] p-16 border rounded-3xl shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
           <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5">
             Choose new password
           </h1>

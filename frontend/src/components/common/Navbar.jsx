@@ -115,7 +115,7 @@ function Navbar() {
         <div className="flex h-20 items-center justify-between px-4 border-b-[1px] border-b-richblack-600 w-full">
           {/* Logo */}
           <Link to="/">
-            <h1 className="text-2xl text-richblue-100 font-inter font-bold">
+            <h1 className="text-2xl text-white/80 font-edu-sa font-bold">
               PadhaiKro
             </h1>
           </Link>
