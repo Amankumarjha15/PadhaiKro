@@ -49,7 +49,7 @@ const {
 } = require("../controllers/courseProgress");
 
 // Importing Middlewares
-const { auth, isInstructor, isStudent, isAdmin } = require("../middlewares/auth")
+const { auth, isInstructor, isStudent, isAdmin } = require("../middlewares/Auth")
 
 // ********************************************************************************************************
 //                                      Course routes
