@@ -18,9 +18,10 @@ Padhai Kro is a full-stack EdTech web application built using the MERN stack (Mo
 ### General Features
 - **User Authentication**: Secure login and registration system using JSON Web Tokens (JWT).
 - **Responsive Design**: Fully responsive UI built with React, ensuring compatibility across devices.
-- **Secure Payments**: Integration with payment gateways for seamless transactions.
+- **Secure Payments**: Integration with Razorpay for seamless transactions.
 - **Search Functionality**: Quickly find courses using keywords and filters.
 - **Admin Panel**: Manage users, courses, and monitor overall platform activity.
+- **Media Management**: Store and manage images and videos using Cloudinary.
 
 ## Tech Stack
 
@@ -36,6 +37,10 @@ Padhai Kro is a full-stack EdTech web application built using the MERN stack (Mo
 ### Database
 - **MongoDB**: For storing user data, course information, and transaction details.
 
+### Additional Services
+- **Razorpay**: For secure and efficient payment processing.
+- **Cloudinary**: For storing and serving images and videos efficiently.
+
 ### Authentication
 - **JSON Web Tokens (JWT)**: For secure user authentication and session management.
 - **CORS (Cross-Origin Resource Sharing)**: For secure serving and handling the requests.
@@ -44,16 +49,13 @@ Padhai Kro is a full-stack EdTech web application built using the MERN stack (Mo
 - **Vercel**: For deploying the frontend.
 - **Render/Heroku** (or similar): For deploying the backend.
 
-## Live Demo
-Check out the live version of the application: [Padhai Kro](https://padhai-kro.vercel.app/)
+## Live Demo Check out the live version of the application: [Padhai Kro](https://padhai-kro.vercel.app/) 
 Dummy I'd for checkups as follow:->
 1. dummyinstructor1@padhaikro.com
 2. dummyinstructor2@padhaikro.com
 3. dummystudent1@padhaikro.com
 4. dummystudent1@padhaikro.com
-
-Password for all four account is "1234"
-
+Password for all four account is "1234" 
 
 ## Installation
 
@@ -77,6 +79,11 @@ Password for all four account is "1234"
      PORT=5000
      MONGO_URI=your_mongo_connection_string
      JWT_SECRET=your_jwt_secret
+     RAZORPAY_KEY_ID=your_razorpay_key_id
+     RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+     CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+     CLOUDINARY_API_KEY=your_cloudinary_api_key
+     CLOUDINARY_API_SECRET=your_cloudinary_api_secret
      ```
 
 4. Start the development server:
