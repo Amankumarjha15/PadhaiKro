@@ -65,7 +65,7 @@ export default function RenderSteps() {
         {steps.map((item , i) => (
           <>
             <div
-              className="flex min-w-[130px] flex-col items-center gap-y-2"
+              className="flex min-w-[100px] flex-col items-center gap-y-2"
               key={i}
             >
               

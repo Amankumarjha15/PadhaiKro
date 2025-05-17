@@ -37,7 +37,7 @@ export function updateDisplayPicture(token, formData) {
       dispatch(setUser(response.data.data))
     } catch (error) {
       console.log("UPDATE_DISPLAY_PICTURE_API API ERROR............", error)
-      toast.error("Could Not Update Display Picture")
+      toast.error("Please Select a Image")
     }
     toast.dismiss(toastId)
   }
